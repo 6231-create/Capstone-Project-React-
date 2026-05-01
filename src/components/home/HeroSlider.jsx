@@ -40,7 +40,7 @@ export default function HeroSlider({ setPage }) {
             <div className="slide-overlay"></div>
             <div className="slide-content">
               <span className="slide-location">
-                <i className="fa fa-map-marker-alt"></i> {s.location},{" "}
+                <i className="fas fa-location-dot"></i> {s.location},{" "}
                 <em>{s.country}</em>
               </span>
               <h1>
@@ -67,14 +67,14 @@ export default function HeroSlider({ setPage }) {
         onClick={() => change(-1)}
         aria-label="Previous slide"
       >
-        <i className="fa fa-chevron-left"></i>
+        <i className="fas fa-chevron-left"></i>
       </button>
       <button
         className="slider-next"
         onClick={() => change(1)}
         aria-label="Next slide"
       >
-        <i className="fa fa-chevron-right"></i>
+        <i className="fas fa-chevron-right"></i>
       </button>
 
       <div className="slider-dots">

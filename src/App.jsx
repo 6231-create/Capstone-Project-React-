@@ -10,11 +10,17 @@ import ContactPage    from "./pages/ContactPage";
 export default function App() {
   const [page, setPage] = useState("home");
   const [loaded, setLoaded] = useState(false);
+  const [darkMode, setDarkMode] = useState(true); // default dark
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 800);
     return () => clearTimeout(timer);
   }, []);
+
+  // Apply theme to <html> element
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
 
   const renderPage = () => {
     switch (page) {
@@ -42,7 +48,7 @@ export default function App() {
 
       <BackToTop />
       <SubHeader />
-      <Navbar page={page} setPage={setPage} />
+      <Navbar page={page} setPage={setPage} darkMode={darkMode} setDarkMode={setDarkMode} />
 
       <main>{renderPage()}</main>
 

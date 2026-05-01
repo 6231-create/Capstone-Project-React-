@@ -41,7 +41,7 @@ export default function ItineraryBuilder() {
 
   return (
     <div className="detail-card" id="itinerary-builder">
-      <h3><i className="fa fa-route"></i> Day-by-Day Itinerary Builder</h3>
+      <h3><i className="fas fa-route"></i> Day-by-Day Itinerary Builder</h3>
       <p className="card-sub">
         Click any day to view and edit stops. Add custom activities to personalise your trip.
       </p>
@@ -71,7 +71,7 @@ export default function ItineraryBuilder() {
           {days[activeDay].stops.map((s, i) => (
             <div className="itin-stop" key={i}>
               <div className="itin-stop-icon">
-                <i className={`fa ${s.icon}`}></i>
+                <i className={`fas ${s.icon}`}></i>
               </div>
               <div className="itin-stop-time">{s.time}</div>
               <div className="itin-stop-body">
@@ -79,7 +79,7 @@ export default function ItineraryBuilder() {
                 <span>{s.note}</span>
                 <div className="itin-stop-actions">
                   <button className="itin-act-btn remove" onClick={() => removeStop(i)}>
-                    <i className="fa fa-times"></i> Remove
+                    <i className="fas fa-xmark"></i> Remove
                   </button>
                 </div>
               </div>

@@ -35,7 +35,7 @@ export default function SearchBar({ setPage }) {
         <div className="search-box">
           {/* Destination */}
           <div className="search-field" style={{ flexDirection: "column" }}>
-            <label><i className="fa fa-map-marker-alt"></i> Destination</label>
+            <label><i className="fas fa-location-dot"></i> Destination</label>
             <input
               type="text"
               placeholder="Where do you want to go?"
@@ -54,7 +54,7 @@ export default function SearchBar({ setPage }) {
 
           {/* Date */}
           <div className="search-field" style={{ flexDirection: "column" }}>
-            <label><i className="fa fa-calendar"></i> Departure</label>
+            <label><i className="fas fa-calendar"></i> Departure</label>
             <input
               type="date"
               value={date}
@@ -72,7 +72,7 @@ export default function SearchBar({ setPage }) {
 
           {/* Travellers */}
           <div className="search-field">
-            <label><i className="fa fa-users"></i> Travellers</label>
+            <label><i className="fas fa-users"></i> Travellers</label>
             <select value={travellers} onChange={(e) => setTravellers(e.target.value)}>
               <option>1 Person</option>
               <option>2 People</option>
@@ -85,7 +85,7 @@ export default function SearchBar({ setPage }) {
 
           {/* Trip Type */}
           <div className="search-field">
-            <label><i className="fa fa-tag"></i> Trip Type</label>
+            <label><i className="fas fa-tag"></i> Trip Type</label>
             <select value={tripType} onChange={(e) => setTripType(e.target.value)}>
               <option>All Types</option>
               <option>Adventure</option>

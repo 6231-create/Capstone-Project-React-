@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useTravelPlans } from "../../context/TravelPlansContext";
 
 export default function BookingSidebar({ setPage }) {
+  const { savedPlans, savePlan, deletePlan } = useTravelPlans();
+
   const [booking, setBooking] = useState({
     date: "",
     travellers: "2 People — $2,450",
@@ -8,11 +11,22 @@ export default function BookingSidebar({ setPage }) {
   });
   const [errors, setErrors] = useState({});
   const [bookingOk, setBookingOk] = useState(false);
+  const [lastSaved, setLastSaved] = useState(null);
+
+  const PRICE_MAP = {
+    "1 Person — $1,299":     1299,
+    "2 People — $2,450":     2450,
+    "3-4 People — $3,600":   3600,
+    "5+ People — Group Rate": null,
+  };
+
+  const currentPrice = PRICE_MAP[booking.travellers];
 
   const setField = (key) => (e) => {
     setBooking((v) => ({ ...v, [key]: e.target.value }));
     setErrors({});
     setBookingOk(false);
+    setLastSaved(null);
   };
 
   const validate = () => {
@@ -29,12 +43,21 @@ export default function BookingSidebar({ setPage }) {
     ev.preventDefault();
     const e = validate();
     setErrors(e);
-    if (Object.keys(e).length === 0) setBookingOk(true);
+    if (Object.keys(e).length === 0) {
+      const plan = savePlan({
+        name: "Bali, Indonesia",
+        date: booking.date,
+        travellers: booking.travellers,
+        package: booking.package,
+        price: currentPrice ? "$" + currentPrice.toLocaleString() : "Group Rate",
+      });
+      setBookingOk(true);
+      setLastSaved(plan.id);
+    }
   };
 
   return (
     <>
-      {/* Booking Widget */}
       <div className="sidebar-widget booking-widget">
         <div className="booking-price">
           <span>From</span>
@@ -42,9 +65,7 @@ export default function BookingSidebar({ setPage }) {
           <span>per person</span>
         </div>
         <div className="booking-rating">
-          {[...Array(5)].map((_, i) => (
-            <i key={i} className="fa fa-star"></i>
-          ))}
+          {[...Array(5)].map((_, i) => (<i key={i} className="fas fa-star"></i>))}
           <span>4.9 (284 reviews)</span>
         </div>
 
@@ -77,16 +98,16 @@ export default function BookingSidebar({ setPage }) {
 
           <div className="booking-total">
             <span>Estimated Total:</span>
-            <strong>$2,450</strong>
+            <strong>{currentPrice ? "$" + currentPrice.toLocaleString() : "Contact Us"}</strong>
           </div>
 
           <button type="submit" className="btn-primary full-width">
-            Book This Trip <i className="fa fa-arrow-right"></i>
+            Book This Trip <i className="fas fa-arrow-right"></i>
           </button>
 
           {bookingOk && (
             <div className="form-success-msg" style={{ marginTop: 10 }}>
-              <i className="fa fa-check-circle"></i> Booking request sent! We'll confirm within 24h.
+              <i className="fas fa-circle-check"></i> Booking saved! See your plans below.
             </div>
           )}
 
@@ -101,9 +122,45 @@ export default function BookingSidebar({ setPage }) {
         </form>
       </div>
 
-      {/* Map Widget */}
+      {savedPlans.length > 0 && (
+        <div className="sidebar-widget saved-plans-section">
+          <h5>
+            <i className="fas fa-bookmark"></i> Your Saved Plans
+            <span style={{ marginLeft: "auto", background: "var(--gold)", color: "var(--dark)", borderRadius: "2px", padding: "2px 8px", fontSize: "0.7rem" }}>
+              {savedPlans.length}
+            </span>
+          </h5>
+
+          {savedPlans.map((plan) => (
+            <div className="saved-plan-card" key={plan.id}>
+              <button className="plan-delete" onClick={() => deletePlan(plan.id)} title="Remove plan">
+                <i className="fas fa-xmark"></i>
+              </button>
+              <div className="plan-name">
+                <i className="fas fa-location-dot" style={{ color: "var(--gold)", marginRight: 6 }}></i>
+                {plan.name}
+              </div>
+              <div className="plan-meta">
+                <span><i className="fas fa-calendar"></i> {plan.date}</span>
+                <span><i className="fas fa-users"></i> {plan.travellers.split("\u2014")[0].trim()}</span>
+                <span><i className="fas fa-tag"></i> {plan.package}</span>
+                <span><i className="fas fa-dollar-sign"></i> {plan.price}</span>
+              </div>
+              {plan.id === lastSaved && (
+                <div className="saved-plan-badge">
+                  <i className="fas fa-circle-check"></i> Just saved
+                </div>
+              )}
+              <div style={{ fontSize: "0.68rem", color: "var(--text-sub)", marginTop: 6 }}>
+                Saved: {plan.savedAt}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
       <div className="sidebar-widget">
-        <h5><i className="fa fa-map-marked-alt"></i> Destination Map</h5>
+        <h5><i className="fas fa-map-location-dot"></i> Destination Map</h5>
         <div className="map-embed">
           <iframe
             src="https://maps.google.com/maps?q=Bali,Indonesia&z=9&output=embed"
@@ -116,21 +173,20 @@ export default function BookingSidebar({ setPage }) {
         </div>
       </div>
 
-      {/* Trip Facts Widget */}
       <div className="sidebar-widget">
-        <h5><i className="fa fa-info-circle"></i> Trip Facts</h5>
+        <h5><i className="fas fa-circle-info"></i> Trip Facts</h5>
         <ul className="facts-list">
           {[
-            ["fa-thermometer-half", "Climate",    "Tropical, 28°C avg"],
-            ["fa-clock",            "Duration",   "10 Days"],
-            ["fa-plane-departure",  "Departs",    "Every Saturday"],
-            ["fa-users",            "Group Size", "Max 12"],
-            ["fa-running",          "Activity",   "Moderate"],
-            ["fa-language",         "Language",   "English Guide"],
-            ["fa-id-card",          "Visa",       "On Arrival (30 days)"],
+            ["fa-thermometer-half","Climate","Tropical, 28°C avg"],
+            ["fa-clock","Duration","10 Days"],
+            ["fa-plane-departure","Departs","Every Saturday"],
+            ["fa-users","Group Size","Max 12"],
+            ["fa-running","Activity","Moderate"],
+            ["fa-language","Language","English Guide"],
+            ["fa-id-card","Visa","On Arrival (30 days)"],
           ].map(([ic, k, v]) => (
             <li key={k}>
-              <i className={`fa ${ic}`}></i>
+              <i className={"fa " + ic}></i>
               <span>{k}</span>
               <strong>{v}</strong>
             </li>
@@ -138,7 +194,6 @@ export default function BookingSidebar({ setPage }) {
         </ul>
       </div>
 
-      {/* Share Widget */}
       <div className="sidebar-widget">
         <h5>Share This Trip</h5>
         <div className="share-btns">

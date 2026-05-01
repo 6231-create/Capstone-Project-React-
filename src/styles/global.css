@@ -1,11 +1,10 @@
 /* =============================================
-   JOURNEYDESK — Dark/Light Themeable CSS
-   Gold accents, Playfair serif
+   VOYAGE AGENCY — Villa Agency Style CSS
+   Dark luxury theme, gold accents, Playfair serif
    ============================================= */
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ── DARK THEME (default) ── */
 :root {
   --gold: #C9A84C;
   --gold-light: #E8C97A;
@@ -22,163 +21,7 @@
   --border2: rgba(201,168,76,0.3);
   --red: #E07070;
   --green: #7DC87D;
-
-  /* semantic aliases */
-  --bg:         var(--dark);
-  --bg2:        var(--dark2);
-  --bg3:        var(--dark3);
-  --bg4:        var(--dark4);
-  --card-bg:    var(--dark3);
-  --card-hover: var(--dark4);
-  --input-bg:   var(--dark4);
-  --navbar-bg:  rgba(13,13,13,0.97);
-  --footer-bg:  var(--dark2);
-  --overlay:    rgba(0,0,0,0.55);
 }
-
-/* ── LIGHT THEME ── */
-[data-theme="light"] {
-  --dark:       #F5F0E8;
-  --dark2:      #EDE7DA;
-  --dark3:      #E4DDD0;
-  --dark4:      #D8D0C4;
-  --dark5:      #CCC4B8;
-  --text:       #1A1209;
-  --text-muted: #6B5B3E;
-  --text-sub:   #8B7B5E;
-  --border:     rgba(150,100,30,0.18);
-  --border2:    rgba(150,100,30,0.35);
-
-  --bg:         #F5F0E8;
-  --bg2:        #EDE7DA;
-  --bg3:        #E4DDD0;
-  --bg4:        #D8D0C4;
-  --card-bg:    #FFFFFF;
-  --card-hover: #F8F4EE;
-  --input-bg:   #FFFFFF;
-  --navbar-bg:  rgba(245,240,232,0.97);
-  --footer-bg:  #2A1F0F;
-  --overlay:    rgba(0,0,0,0.45);
-}
-
-/* ── SMOOTH TRANSITIONS on theme switch ── */
-body,
-.navbar, .sub-header, .footer,
-.prop-card, .how-card, .test-card, .contact-card,
-.detail-card, .sidebar-widget, .booking-widget,
-.deal-specs, .bsum-card, .filter-bar,
-input, select, textarea, .search-box,
-.acc-item, .acc-btn, .acc-body,
-.agent-card, .contact-form, .itin-stop,
-.stat-item, .page-banner, .banner-content {
-  transition: background 0.3s ease, color 0.3s ease,
-              border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* ── THEME TOGGLE BUTTON ── */
-.theme-toggle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid var(--border2);
-  background: var(--dark4);
-  color: var(--gold);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  transition: all 0.25s;
-  flex-shrink: 0;
-}
-.theme-toggle:hover {
-  background: var(--gold);
-  color: var(--dark);
-  border-color: var(--gold);
-  transform: rotate(20deg) scale(1.08);
-}
-
-/* ── LIGHT MODE OVERRIDES ── */
-[data-theme="light"] body                { background: var(--bg); color: var(--text); }
-[data-theme="light"] .navbar             { background: var(--navbar-bg); border-bottom-color: var(--border2); }
-[data-theme="light"] .sub-header        { background: var(--bg2); }
-[data-theme="light"] .footer            { background: var(--footer-bg); }
-[data-theme="light"] .prop-card         { background: var(--card-bg); border: 1px solid var(--border); box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
-[data-theme="light"] .prop-body         { background: var(--card-bg); }
-[data-theme="light"] .how-card          { background: var(--card-bg); border: 1px solid var(--border); }
-[data-theme="light"] .test-card         { background: var(--card-bg); border: 1px solid var(--border); }
-[data-theme="light"] .contact-card      { background: var(--card-bg); border: 1px solid var(--border); }
-[data-theme="light"] .detail-card       { background: var(--card-bg); border: 1px solid var(--border); }
-[data-theme="light"] .sidebar-widget    { background: var(--card-bg); border: 1px solid var(--border); }
-[data-theme="light"] .booking-widget    { background: var(--card-bg); }
-[data-theme="light"] .deal-specs        { background: var(--card-bg); border: 1px solid var(--border); }
-[data-theme="light"] .search-box        { background: var(--card-bg); border: 1px solid var(--border2); box-shadow: 0 4px 24px rgba(0,0,0,0.1); }
-[data-theme="light"] .search-field      { background: transparent; }
-[data-theme="light"] .filter-bar        { background: var(--card-bg); border: 1px solid var(--border); }
-[data-theme="light"] .acc-btn           { background: var(--bg3); color: var(--text); }
-[data-theme="light"] .acc-btn:hover     { background: var(--bg4); }
-[data-theme="light"] .acc-body          { background: var(--bg2); color: var(--text-muted); }
-[data-theme="light"] .acc-item          { border-color: var(--border); }
-[data-theme="light"] .agent-card        { background: var(--bg3); border: 1px solid var(--border); }
-[data-theme="light"] .itin-stop         { background: var(--bg3); border-color: var(--border); }
-[data-theme="light"] .itin-stop-icon    { background: var(--gold); color: var(--dark); }
-[data-theme="light"] .bsum-card         { background: var(--bg3); border: 1px solid var(--border); }
-[data-theme="light"] .bslider-track     { background: var(--bg4); }
-[data-theme="light"] .deal-panel        { background: transparent; }
-[data-theme="light"] .stat-item         { border-color: var(--border); }
-[data-theme="light"] .stats-section     { background: var(--bg2); }
-[data-theme="light"] .how-section       { background: var(--bg3); }
-[data-theme="light"] .testimonials-section { background: var(--bg2); }
-[data-theme="light"] .deals-section     { background: var(--bg); }
-[data-theme="light"] .properties-section { background: var(--bg3); }
-[data-theme="light"] .faq-section       { background: var(--bg2); }
-[data-theme="light"] .contact-cards-section { background: var(--bg); }
-[data-theme="light"] .contact-main-section  { background: var(--bg2); }
-[data-theme="light"] .filter-section    { background: var(--bg); }
-[data-theme="light"] .destinations-listing { background: var(--bg2); }
-[data-theme="light"] .related-section   { background: var(--bg2); }
-[data-theme="light"] .featured-section  { background: var(--bg); }
-[data-theme="light"] input,
-[data-theme="light"] select,
-[data-theme="light"] textarea {
-  background: var(--input-bg);
-  color: var(--text);
-  border-color: var(--border2);
-}
-[data-theme="light"] input::placeholder,
-[data-theme="light"] textarea::placeholder { color: var(--text-muted); }
-[data-theme="light"] .nav-links button  { color: var(--text-muted); }
-[data-theme="light"] .nav-links button.active { color: var(--gold); }
-[data-theme="light"] .logo              { color: var(--gold); }
-[data-theme="light"] .logo span         { color: var(--text); }
-[data-theme="light"] .section-tag       { color: var(--gold); }
-[data-theme="light"] .hamburger         { color: var(--text); border-color: var(--border2); }
-[data-theme="light"] .back-to-top,
-[data-theme="light"] #back-to-top       { background: var(--gold); color: #0D0D0D; }
-[data-theme="light"] .btn-outline       { color: var(--gold); border-color: var(--gold); }
-[data-theme="light"] .btn-outline:hover { background: var(--gold); color: #0D0D0D; }
-[data-theme="light"] .btn-outline-sm    { color: var(--gold); border-color: var(--gold); }
-[data-theme="light"] .itin-tab          { background: var(--bg3); color: var(--text-muted); border-color: var(--border); }
-[data-theme="light"] .itin-tab.active   { background: var(--gold); color: #0D0D0D; }
-[data-theme="light"] .deal-tab          { background: var(--bg3); color: var(--text-muted); border-color: var(--border); }
-[data-theme="light"] .deal-tab.active   { background: var(--gold); color: #0D0D0D; }
-[data-theme="light"] .filter-chip       { background: var(--bg3); color: var(--text-muted); border-color: var(--border); }
-[data-theme="light"] .filter-chip.active { background: var(--gold); color: #0D0D0D; }
-[data-theme="light"] .page-btn          { background: var(--bg3); color: var(--text-muted); border-color: var(--border); }
-[data-theme="light"] .page-btn.active   { background: var(--gold); color: #0D0D0D; }
-[data-theme="light"] .booking-total     { background: var(--bg3); border-color: var(--border); }
-[data-theme="light"] .facts-list li     { border-color: var(--border); }
-[data-theme="light"] .share-btn.fb      { background: #1877F2; color: #fff; }
-[data-theme="light"] .share-btn.tw      { background: #1DA1F2; color: #fff; }
-[data-theme="light"] .share-btn.wa      { background: #25D366; color: #fff; }
-[data-theme="light"] .footer-col h5,
-[data-theme="light"] .footer-col a,
-[data-theme="light"] .footer-col p      { color: #F0EAD6 !important; }
-[data-theme="light"] .footer-bottom     { background: #1A1005; }
-[data-theme="light"] .footer-bottom p   { color: #9A9080 !important; }
-[data-theme="light"] .newsletter input  { background: rgba(255,255,255,0.1); color: #F0EAD6; }
-[data-theme="light"] .inc-col.included  { background: rgba(125,200,125,0.08); }
-[data-theme="light"] .inc-col.excluded  { background: rgba(224,112,112,0.08); }
 
 html { scroll-behavior: smooth; }
 
@@ -269,7 +112,8 @@ img { max-width: 100%; display: block; }
 }
 .logo span { color: var(--text); font-weight: 400; }
 .nav-links { display: flex; gap: 32px; }
-.nav-links a {
+.nav-links a,
+.nav-links button {
   font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 1.5px;
@@ -278,13 +122,16 @@ img { max-width: 100%; display: block; }
   transition: color 0.2s;
   position: relative;
 }
-.nav-links a::after {
+.nav-links a::after,
+.nav-links button::after {
   content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
   height: 1px; background: var(--gold);
   transform: scaleX(0); transition: transform 0.2s;
 }
-.nav-links a:hover, .nav-links a.active { color: var(--gold); }
-.nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+.nav-links a:hover, .nav-links a.active,
+.nav-links button:hover, .nav-links button.active { color: var(--gold); }
+.nav-links a:hover::after, .nav-links a.active::after,
+.nav-links button:hover::after, .nav-links button.active::after { transform: scaleX(1); }
 .btn-nav {
   background: var(--gold);
   color: var(--dark);
@@ -849,9 +696,11 @@ img { max-width: 100%; display: block; }
 .footer-social a:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); }
 .footer-col h5 { font-size: 0.75rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
 .footer-col ul li { margin-bottom: 10px; }
-.footer-col ul a { font-size: 0.84rem; color: var(--text-muted); transition: color 0.2s; display: flex; align-items: center; gap: 6px; }
-.footer-col ul a::before { content: '›'; color: var(--gold); font-size: 1rem; }
-.footer-col ul a:hover { color: var(--gold); }
+.footer-col ul a, .footer-col ul button {
+  font-size: 0.84rem; color: var(--text-muted); transition: color 0.2s; display: flex; align-items: center; gap: 6px;
+}
+.footer-col ul a::before, .footer-col ul button::before { content: '›'; color: var(--gold); font-size: 1rem; }
+.footer-col ul a:hover, .footer-col ul button:hover { color: var(--gold); }
 .newsletter { display: flex; margin-bottom: 16px; }
 .newsletter input { flex: 1; background: var(--dark3); border: 1px solid var(--border); border-right: none; color: var(--text); font-family: 'Raleway', sans-serif; font-size: 0.82rem; padding: 10px 14px; outline: none; border-radius: 2px 0 0 2px; }
 .newsletter input:focus { border-color: var(--gold); }
@@ -903,4 +752,110 @@ img { max-width: 100%; display: block; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .contact-cards-grid { grid-template-columns: 1fr; }
   .budget-summary { grid-template-columns: 1fr 1fr; }
+}
+
+/* ===== SAVED PLANS ===== */
+.saved-plans-section { margin-top: 24px; }
+.saved-plans-section h5 {
+  font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.saved-plan-card {
+  background: var(--dark3); border: 1px solid var(--border);
+  border-radius: 4px; padding: 14px 16px; margin-bottom: 10px;
+  position: relative;
+}
+.saved-plan-card .plan-name {
+  font-size: 0.92rem; font-weight: 600; color: var(--text); margin-bottom: 4px;
+}
+.saved-plan-card .plan-meta {
+  font-size: 0.76rem; color: var(--text-muted); display: flex; gap: 12px; flex-wrap: wrap;
+}
+.saved-plan-card .plan-meta i { color: var(--gold); margin-right: 3px; }
+.saved-plan-card .plan-delete {
+  position: absolute; top: 10px; right: 10px;
+  background: none; border: none; cursor: pointer;
+  color: var(--text-sub); font-size: 0.78rem; transition: color 0.2s;
+}
+.saved-plan-card .plan-delete:hover { color: var(--red); }
+.saved-plan-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: rgba(125,200,125,0.15); border: 1px solid rgba(125,200,125,0.3);
+  color: var(--green); font-size: 0.72rem; padding: 4px 10px;
+  border-radius: 2px; margin-top: 10px;
+}
+
+/* ===== THEME TOGGLE BUTTON ===== */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: 1px solid var(--border2);
+  color: var(--text-muted);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.theme-toggle-btn:hover {
+  background: var(--gold);
+  color: var(--dark);
+  border-color: var(--gold);
+}
+.theme-toggle-btn i {
+  font-size: 0.85rem;
+}
+@media (max-width: 768px) {
+  .theme-toggle-btn span { display: none; }
+  .theme-toggle-btn { padding: 8px 10px; }
+}
+
+/* ===== LIGHT MODE THEME ===== */
+[data-theme="light"] {
+  --dark:  #F5F3EE;
+  --dark2: #ECEAE4;
+  --dark3: #E2DFD8;
+  --dark4: #D5D1C8;
+  --dark5: #C8C4BA;
+  --text:  #1A1A1A;
+  --text-muted: #4A4540;
+  --text-sub:   #6A6560;
+  --border:  rgba(120,100,60,0.18);
+  --border2: rgba(120,100,60,0.35);
+}
+
+[data-theme="light"] body {
+  color: var(--text);
+  background: var(--dark);
+}
+
+[data-theme="light"] .navbar {
+  background: rgba(245,243,238,0.97);
+}
+
+[data-theme="light"] .slide-content h1,
+[data-theme="light"] .video-content h2,
+[data-theme="light"] .deal-info-box h4 {
+  color: #fff;
+}
+
+[data-theme="light"] .search-field input,
+[data-theme="light"] .search-field select {
+  color: var(--text);
+}
+
+[data-theme="light"] .itin-tab {
+  color: var(--text-muted);
+}
+
+[data-theme="light"] .acc-btn {
+  color: var(--text);
 }

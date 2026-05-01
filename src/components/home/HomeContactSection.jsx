@@ -121,12 +121,12 @@ export default function HomeContactSection() {
           </div>
 
           <button type="submit" className="btn-primary">
-            Send Message <i className="fa fa-paper-plane"></i>
+            Send Message <i className="fas fa-paper-plane"></i>
           </button>
 
           {sent && (
             <div className="form-success-msg">
-              <i className="fa fa-check-circle"></i> Thank you! We'll be in touch within 24 hours.
+              <i className="fas fa-circle-check"></i> Thank you! We'll be in touch within 24 hours.
             </div>
           )}
         </form>

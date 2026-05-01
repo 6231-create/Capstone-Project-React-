@@ -88,7 +88,7 @@ export default function DestinationsPage({ setPage }) {
             <a href="#" className="page-btn">2</a>
             <a href="#" className="page-btn">3</a>
             <a href="#" className="page-btn next">
-              <i className="fa fa-chevron-right"></i>
+              <i className="fas fa-chevron-right"></i>
             </a>
           </div>
         </div>

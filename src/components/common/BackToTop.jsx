@@ -16,7 +16,7 @@ export default function BackToTop() {
       style={{ opacity: visible ? 1 : 0, visibility: visible ? "visible" : "hidden" }}
       aria-label="Back to top"
     >
-      <i className="fa fa-chevron-up"></i>
+      <i className="fas fa-chevron-up"></i>
     </button>
   );
 }

@@ -23,13 +23,13 @@ export default function IncludedExcluded() {
       <h3>What's Included</h3>
       <div className="included-grid">
         <div className="inc-col included">
-          <h5><i className="fa fa-check-circle"></i> Included</h5>
+          <h5><i className="fas fa-circle-check"></i> Included</h5>
           <ul>
             {INCLUDED.map((item) => <li key={item}>{item}</li>)}
           </ul>
         </div>
         <div className="inc-col excluded">
-          <h5><i className="fa fa-times-circle"></i> Not Included</h5>
+          <h5><i className="fas fa-circle-xmark"></i> Not Included</h5>
           <ul>
             {EXCLUDED.map((item) => <li key={item}>{item}</li>)}
           </ul>

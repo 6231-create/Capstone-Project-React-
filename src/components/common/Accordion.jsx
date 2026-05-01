@@ -11,7 +11,7 @@ export default function Accordion({ items }) {
         <div className="acc-item" key={i}>
           <button className="acc-btn" onClick={() => toggle(i)}>
             {question}{" "}
-            <i className={`fa ${openIdx === i ? "fa-minus" : "fa-plus"}`}></i>
+            <i className={`fas ${openIdx === i ? "fa-minus" : "fa-plus"}`}></i>
           </button>
           <div
             className="acc-body"

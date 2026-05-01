@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTravelPlans } from "../../context/TravelPlansContext";
 
 const ENQUIRY_TYPES = [
   "Beach Package", "Adventure Trek", "Cultural Tour",
@@ -6,16 +7,20 @@ const ENQUIRY_TYPES = [
 ];
 
 export default function ContactForm() {
+  const { savedPlans, savePlan, deletePlan } = useTravelPlans();
+
   const [form, setForm] = useState({
     name: "", email: "", phone: "", type: "",
     destination: "", dates: "", subject: "", message: "",
   });
   const [errors, setErrors] = useState({});
   const [sent, setSent] = useState(false);
+  const [lastSaved, setLastSaved] = useState(null);
 
   const setField = (key) => (e) => {
     setForm((v) => ({ ...v, [key]: e.target.value }));
     setErrors((v) => ({ ...v, [key]: "" }));
+    setSent(false);
   };
 
   const validate = () => {
@@ -40,7 +45,17 @@ export default function ContactForm() {
     const errs = validate();
     setErrors(errs);
     if (Object.keys(errs).length === 0) {
+      const plan = savePlan({
+        name: form.destination ? form.destination : "Custom Enquiry",
+        date: form.dates || "Flexible",
+        travellers: "—",
+        package: form.type || "Custom Itinerary",
+        price: "TBD",
+        contactName: form.name,
+        contactEmail: form.email,
+      });
       setSent(true);
+      setLastSaved(plan.id);
       setForm({ name: "", email: "", phone: "", type: "", destination: "", dates: "", subject: "", message: "" });
     }
   };
@@ -121,15 +136,54 @@ export default function ContactForm() {
         </div>
 
         <button type="submit" className="btn-primary">
-          Send Message <i className="fa fa-paper-plane"></i>
+          Send Message <i className="fas fa-paper-plane"></i>
         </button>
 
         {sent && (
           <div className="form-success-msg">
-            <i className="fa fa-check-circle"></i> Thank you! We'll be in touch within 24 hours.
+            <i className="fas fa-circle-check"></i> Thank you! Your travel plan has been saved and we'll be in touch within 24 hours.
           </div>
         )}
       </form>
+
+      {/* Saved Plans Display */}
+      {savedPlans.length > 0 && (
+        <div className="saved-plans-section" style={{ marginTop: 32 }}>
+          <h5 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", color: "var(--text)", marginBottom: 16, display: "flex", alignItems: "center", gap: 10 }}>
+            <i className="fas fa-bookmark" style={{ color: "var(--gold)" }}></i>
+            Your Saved Travel Plans
+            <span style={{ background: "var(--gold)", color: "var(--dark)", borderRadius: "2px", padding: "2px 8px", fontSize: "0.75rem", fontFamily: "Raleway, sans-serif" }}>
+              {savedPlans.length}
+            </span>
+          </h5>
+
+          {savedPlans.map((plan) => (
+            <div className="saved-plan-card" key={plan.id}>
+              <button className="plan-delete" onClick={() => deletePlan(plan.id)} title="Remove plan">
+                <i className="fas fa-xmark"></i>
+              </button>
+              <div className="plan-name">
+                <i className="fas fa-location-dot" style={{ color: "var(--gold)", marginRight: 6 }}></i>
+                {plan.name}
+              </div>
+              <div className="plan-meta">
+                {plan.contactName && <span><i className="fas fa-user"></i> {plan.contactName}</span>}
+                {plan.date && plan.date !== "—" && <span><i className="fas fa-calendar"></i> {plan.date}</span>}
+                {plan.package && <span><i className="fas fa-tag"></i> {plan.package}</span>}
+                {plan.price && plan.price !== "TBD" && <span><i className="fas fa-dollar-sign"></i> {plan.price}</span>}
+              </div>
+              {plan.id === lastSaved && (
+                <div className="saved-plan-badge">
+                  <i className="fas fa-circle-check"></i> Just saved
+                </div>
+              )}
+              <div style={{ fontSize: "0.68rem", color: "var(--text-sub)", marginTop: 6 }}>
+                Saved: {plan.savedAt}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

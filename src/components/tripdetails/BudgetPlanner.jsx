@@ -23,7 +23,7 @@ export default function BudgetPlanner() {
 
   return (
     <div className="detail-card" id="budget-planner">
-      <h3><i className="fa fa-wallet"></i> Budget Planner</h3>
+      <h3><i className="fas fa-wallet"></i> Budget Planner</h3>
       <p className="card-sub">
         Adjust values to plan your total trip budget across key categories.
       </p>
@@ -70,7 +70,7 @@ export default function BudgetPlanner() {
       <div className="budget-sliders">
         {BUDGET_CATS.map((c) => (
           <div className="bslider-row" key={c.name}>
-            <div className="bslider-icon"><i className={`fa ${c.icon}`}></i></div>
+            <div className="bslider-icon"><i className={`fas ${c.icon}`}></i></div>
             <div className="bslider-label">{c.name}</div>
             <div className="bslider-track">
               <div

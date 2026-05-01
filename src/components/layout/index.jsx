@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
-import ThemeToggle from "../common/ThemeToggle";
 
 export function SubHeader() {
   return (
     <div className="sub-header">
       <div className="container">
         <div className="sub-header-left">
-          <span><i className="fa fa-envelope"></i> hello@journeydesk.com</span>
-          <span><i className="fa fa-map-marker-alt"></i> 42 Explorer Street, Miami, FL 33101</span>
+          <span><i className="fas fa-envelope"></i> hello@journeydesk.com</span>
+          <span><i className="fas fa-location-dot"></i> 42 Explorer Street, Miami, FL 33101</span>
         </div>
         <div className="sub-header-right">
           <a href="#" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
@@ -20,7 +19,7 @@ export function SubHeader() {
   );
 }
 
-export function Navbar({ page, setPage }) {
+export function Navbar({ page, setPage, darkMode, setDarkMode }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -67,14 +66,24 @@ export function Navbar({ page, setPage }) {
           ))}
         </div>
 
-        <button className="btn-nav" onClick={() => nav("trip-details")}>
-          Book a Trip
-        </button>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          {/* Theme Toggle Button */}
+          <button
+            className="theme-toggle-btn"
+            onClick={() => setDarkMode((v) => !v)}
+            title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          >
+            <i className={`fas ${darkMode ? "fa-sun" : "fa-moon"}`}></i>
+            <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
+          </button>
 
-        <ThemeToggle />
+          <button className="btn-nav" onClick={() => nav("trip-details")}>
+            Book a Trip
+          </button>
+        </div>
 
         <button className="hamburger" onClick={() => setMenuOpen((v) => !v)} aria-label="Toggle menu">
-          <i className={`fa ${menuOpen ? "fa-times" : "fa-bars"}`}></i>
+          <i className={`fas ${menuOpen ? "fa-xmark" : "fa-bars"}`}></i>
         </button>
       </div>
     </nav>
@@ -186,8 +195,8 @@ export function Footer({ setPage }) {
             />
             <button onClick={handleNewsletter} aria-label="Subscribe">
               {subOk
-                ? <i className="fa fa-check"></i>
-                : <i className="fa fa-arrow-right"></i>}
+                ? <i className="fas fa-check"></i>
+                : <i className="fas fa-arrow-right"></i>}
             </button>
           </div>
           {emailError && (
@@ -199,8 +208,8 @@ export function Footer({ setPage }) {
             </p>
           )}
           <div className="footer-badges">
-            <span><i className="fa fa-shield-alt"></i> Secure Booking</span>
-            <span><i className="fa fa-award"></i> Best Price</span>
+            <span><i className="fas fa-shield-halved"></i> Secure Booking</span>
+            <span><i className="fas fa-award"></i> Best Price</span>
           </div>
         </div>
       </div>
@@ -209,7 +218,7 @@ export function Footer({ setPage }) {
         <div className="container">
           <p>
             Copyright &copy; 2025 JourneyDesk. All rights reserved. Designed with{" "}
-            <i className="fa fa-heart"></i> for travellers.
+            <i className="fas fa-heart"></i> for travellers.
           </p>
         </div>
       </div>

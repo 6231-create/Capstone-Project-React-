@@ -15,7 +15,7 @@ const HIGHLIGHTS = [
   ["fa-clock",         "10 Days / 9 Nights"],
   ["fa-users",         "Max 12 People"],
   ["fa-star",          "4.9 / 5.0"],
-  ["fa-map-marker-alt","Bali, Indonesia"],
+  ["fa-location-dot","Bali, Indonesia"],
   ["fa-language",      "English Guide"],
   ["fa-plane",         "Flights Optional"],
 ];
@@ -45,7 +45,7 @@ export default function TripDetailsPage({ setPage }) {
               <h3>About This Trip</h3>
               <div className="trip-highlights">
                 {HIGHLIGHTS.map(([ic, txt]) => (
-                  <span key={txt}><i className={`fa ${ic}`}></i> {txt}</span>
+                  <span key={txt}><i className={`fas ${ic}`}></i> {txt}</span>
                 ))}
               </div>
               <p>

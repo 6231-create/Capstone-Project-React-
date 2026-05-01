@@ -8,7 +8,7 @@ export default function FeaturedTrip({ setPage }) {
             alt="Featured Trip – Bali"
           />
           <div className="featured-badge">
-            <i className="fa fa-star"></i> Featured
+            <i className="fas fa-star"></i> Featured
           </div>
         </div>
 
@@ -24,10 +24,10 @@ export default function FeaturedTrip({ setPage }) {
             and transfers — everything handled for you.
           </p>
           <ul className="feat-list">
-            <li><i className="fa fa-check-circle"></i> 10 nights at a 5-star resort</li>
-            <li><i className="fa fa-check-circle"></i> All meals and activities included</li>
-            <li><i className="fa fa-check-circle"></i> Private airport transfers</li>
-            <li><i className="fa fa-check-circle"></i> Expert local guides every day</li>
+            <li><i className="fas fa-circle-check"></i> 10 nights at a 5-star resort</li>
+            <li><i className="fas fa-circle-check"></i> All meals and activities included</li>
+            <li><i className="fas fa-circle-check"></i> Private airport transfers</li>
+            <li><i className="fas fa-circle-check"></i> Expert local guides every day</li>
           </ul>
           <button
             className="btn-primary"

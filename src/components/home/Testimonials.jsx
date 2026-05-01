@@ -14,9 +14,9 @@ export default function Testimonials() {
             <div className="test-card" key={i}>
               <div className="stars">
                 {[...Array(Math.floor(t.stars))].map((_, j) => (
-                  <i key={j} className="fa fa-star"></i>
+                  <i key={j} className="fas fa-star"></i>
                 ))}
-                {t.stars % 1 !== 0 && <i className="fa fa-star-half-alt"></i>}
+                {t.stars % 1 !== 0 && <i className="fas fa-star-half-alt"></i>}
               </div>
               <p>"{t.text}"</p>
               <div className="test-author">

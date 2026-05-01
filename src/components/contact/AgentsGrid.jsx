@@ -12,7 +12,7 @@ export default function AgentsGrid() {
               <strong>{a.name}</strong>
               <span>{a.role}</span>
               <a href={`mailto:${a.email}`} aria-label={`Email ${a.name}`}>
-                <i className="fa fa-envelope"></i>
+                <i className="fas fa-envelope"></i>
               </a>
             </div>
           </div>

@@ -16,7 +16,7 @@ export default function VideoSection() {
           Our <em>Travellers' Eyes</em>
         </h2>
         <a href="#" className="play-btn" aria-label="Play video">
-          <i className="fa fa-play"></i>
+          <i className="fas fa-play"></i>
         </a>
         <p>Watch real stories from 10,000+ happy travellers</p>
       </div>

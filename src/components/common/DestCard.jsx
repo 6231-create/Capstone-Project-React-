@@ -16,11 +16,11 @@ export default function DestCard({ dest, setPage }) {
         </div>
         <h4>{dest.title}</h4>
         <ul className="prop-meta">
-          <li><i className="fa fa-clock"></i> {dest.days}</li>
-          <li><i className="fa fa-users"></i> {dest.group}</li>
-          <li><i className="fa fa-globe"></i> {dest.region}</li>
-          <li><i className="fa fa-star"></i> {dest.rating}</li>
-          <li><i className="fa fa-utensils"></i> {dest.meals}</li>
+          <li><i className="fas fa-clock"></i> {dest.days}</li>
+          <li><i className="fas fa-users"></i> {dest.group}</li>
+          <li><i className="fas fa-globe"></i> {dest.region}</li>
+          <li><i className="fas fa-star"></i> {dest.rating}</li>
+          <li><i className="fas fa-utensils"></i> {dest.meals}</li>
         </ul>
         <button className="btn-outline-sm">View Itinerary</button>
       </div>
