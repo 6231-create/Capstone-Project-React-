@@ -6,6 +6,7 @@ import HomePage       from "./pages/HomePage";
 import DestinationsPage from "./pages/DestinationsPage";
 import TripDetailsPage from "./pages/TripDetailsPage";
 import ContactPage    from "./pages/ContactPage";
+import BudgetPlannerPage from "./pages/BudgetPlannerPage";
 
 export default function App() {
   const [page, setPage] = useState("home");
@@ -28,6 +29,7 @@ export default function App() {
       case "destinations": return <DestinationsPage setPage={setPage} />;
       case "trip-details": return <TripDetailsPage  setPage={setPage} />;
       case "contact":      return <ContactPage />;
+      case "budget":       return <BudgetPlannerPage />;
       default:             return <HomePage        setPage={setPage} />;
     }
   };

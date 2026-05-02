@@ -39,6 +39,7 @@ export function Navbar({ page, setPage, darkMode, setDarkMode }) {
     ["home", "Home"],
     ["destinations", "Destinations"],
     ["trip-details", "Trip Details"],
+    ["budget", "Budget Planner"],
     ["contact", "Contact Us"],
   ];
 
@@ -119,6 +120,7 @@ export function Footer({ setPage }) {
     ["home", "Home"],
     ["destinations", "Destinations"],
     ["trip-details", "Trip Details"],
+    ["budget", "Budget Planner"],
     ["contact", "Contact Us"],
   ];
 
