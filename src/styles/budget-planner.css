@@ -10,13 +10,37 @@
 
 /* Hero Section */
 .budget-hero {
-  background: linear-gradient(135deg, var(--dark2) 0%, var(--dark3) 100%);
-  padding: 80px 0 60px;
-  border-bottom: 1px solid var(--border);
   position: relative;
+  padding: 120px 0 80px;
+  overflow: hidden;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
 }
 
-.budget-hero::before {
+.budget-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.budget-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(13,13,13,0.92) 0%, rgba(17,17,17,0.85) 100%);
+  z-index: 1;
+}
+
+.budget-hero::after {
   content: '';
   position: absolute;
   top: 0;
@@ -24,20 +48,26 @@
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 50%, rgba(201,168,76,0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 50%, rgba(201,168,76,0.03) 0%, transparent 50%);
+    radial-gradient(circle at 20% 50%, rgba(201,168,76,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(201,168,76,0.05) 0%, transparent 50%);
   pointer-events: none;
+  z-index: 1;
+}
+
+.budget-hero .container {
+  position: relative;
+  z-index: 2;
 }
 
 .budget-hero-content {
   text-align: center;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .budget-hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 400;
   margin: 16px 0 20px;
   color: var(--text);
@@ -49,15 +79,213 @@
 }
 
 .budget-hero p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: var(--text-muted);
   max-width: 600px;
+  margin: 0 auto 48px;
+}
+
+/* Hero Stats */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 900px;
   margin: 0 auto;
+}
+
+.hero-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(17,17,17,0.6);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.hero-stat-item:hover {
+  background: rgba(17,17,17,0.8);
+  border-color: var(--border2);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(201,168,76,0.15);
+}
+
+.hero-stat-item i {
+  font-size: 2rem;
+  color: var(--gold);
+  min-width: 48px;
+  text-align: center;
+}
+
+.hero-stat-item strong {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.hero-stat-item span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Budget Intro Section */
+.budget-intro {
+  padding: 80px 0;
+  background: var(--dark3);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.featured-image {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.featured-image img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.featured-image:hover img {
+  transform: scale(1.05);
+}
+
+.featured-badge {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: var(--gold);
+  color: var(--dark);
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(201,168,76,0.4);
+}
+
+.featured-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin: 16px 0 20px;
+  color: var(--text);
+}
+
+.featured-content h2 strong {
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.featured-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+
+.feat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.feat-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.feat-list i {
+  color: var(--gold);
+  font-size: 1.1rem;
 }
 
 /* Main Budget Section */
 .budget-main {
   padding: 60px 0;
+}
+
+/* Quick Stats Cards */
+.quick-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.quick-stat-card {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s ease;
+}
+
+.quick-stat-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(201,168,76,0.12);
+}
+
+.stat-icon {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 1.8rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.stat-info h4 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-sub);
 }
 
 .budget-grid {
@@ -474,20 +702,196 @@
   margin-top: 4px;
 }
 
+/* Budget Gallery Section */
+.budget-gallery {
+  padding: 80px 0;
+  background: var(--dark3);
+  border-top: 1px solid var(--border);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 320px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(201,168,76,0.2);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(13,13,13,0.95) 0%, transparent 100%);
+  padding: 24px 20px;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  padding-bottom: 32px;
+}
+
+.gallery-overlay h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.gallery-overlay p {
+  font-size: 1rem;
+  color: var(--gold);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gallery-overlay i {
+  font-size: 0.9rem;
+}
+
+/* CTA Section */
+.budget-cta {
+  padding: 60px 0;
+  background: linear-gradient(135deg, var(--dark2) 0%, var(--dark3) 100%);
+  border-top: 1px solid var(--border);
+}
+
+.cta-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  background: var(--dark3);
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+  padding: 48px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.cta-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%);
+  border-radius: 16px;
+  font-size: 2.2rem;
+  color: var(--dark);
+  flex-shrink: 0;
+}
+
+.cta-text {
+  flex: 1;
+}
+
+.cta-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.cta-text p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.btn-cta {
+  padding: 16px 36px;
+  background: var(--gold);
+  color: var(--dark);
+  border: none;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-cta:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201,168,76,0.35);
+}
+
+.btn-cta i {
+  font-size: 1rem;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .budget-grid {
     grid-template-columns: 1fr;
   }
 
+  .featured-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quick-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
   .budget-hero h1 {
     font-size: 2.5rem;
+  }
+
+  .cta-content {
+    flex-direction: column;
+    text-align: center;
   }
 }
 
 @media (max-width: 768px) {
   .budget-hero {
-    padding: 60px 0 40px;
+    padding: 80px 0 60px;
+    min-height: 400px;
   }
 
   .budget-hero h1 {
@@ -496,6 +900,31 @@
 
   .budget-hero p {
     font-size: 1rem;
+    margin-bottom: 32px;
+  }
+
+  .hero-stat-item {
+    padding: 18px;
+  }
+
+  .hero-stat-item i {
+    font-size: 1.5rem;
+  }
+
+  .hero-stat-item strong {
+    font-size: 1rem;
+  }
+
+  .budget-intro {
+    padding: 60px 0;
+  }
+
+  .featured-image img {
+    height: 350px;
+  }
+
+  .featured-content h2 {
+    font-size: 2rem;
   }
 
   .budget-main {
@@ -523,11 +952,57 @@
     justify-content: space-between;
     margin-top: 8px;
   }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .gallery-item {
+    height: 280px;
+  }
+
+  .budget-gallery {
+    padding: 60px 0;
+  }
+
+  .budget-cta {
+    padding: 40px 0;
+  }
+
+  .cta-content {
+    padding: 32px 24px;
+  }
+
+  .cta-text h3 {
+    font-size: 1.5rem;
+  }
+
+  .cta-text p {
+    font-size: 0.95rem;
+  }
 }
 
 @media (max-width: 480px) {
   .budget-hero h1 {
     font-size: 1.6rem;
+  }
+
+  .budget-hero p {
+    font-size: 0.9rem;
+  }
+
+  .hero-stat-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .featured-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .featured-content p {
+    font-size: 0.95rem;
   }
 
   .budget-stats {
@@ -540,5 +1015,34 @@
 
   .expense-amount {
     font-size: 1.1rem;
+  }
+
+  .quick-stat-card {
+    padding: 20px;
+  }
+
+  .stat-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
+  }
+
+  .btn-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .gallery-item {
+    height: 240px;
+  }
+
+  .cta-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 1.8rem;
   }
 }

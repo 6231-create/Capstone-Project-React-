@@ -58,13 +58,71 @@ export default function BudgetPlannerPage() {
 
   return (
     <div className="budget-planner-page">
-      {/* Hero Section */}
+      {/* Hero Section with Background Image */}
       <section className="budget-hero">
+        <div className="budget-hero-overlay"></div>
+        <div className="budget-hero-bg" style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1554224311-beee813a77ca?w=1600&q=80)'
+        }}></div>
         <div className="container">
           <div className="budget-hero-content">
             <span className="section-tag">| Budget Planner</span>
             <h1>Plan Your <strong>Dream Trip</strong> Budget</h1>
             <p>Keep track of your travel expenses and stay within budget</p>
+            <div className="hero-stats">
+              <div className="hero-stat-item">
+                <i className="fas fa-wallet"></i>
+                <div>
+                  <strong>Smart Planning</strong>
+                  <span>Track every expense</span>
+                </div>
+              </div>
+              <div className="hero-stat-item">
+                <i className="fas fa-chart-line"></i>
+                <div>
+                  <strong>Real-Time Updates</strong>
+                  <span>See your budget live</span>
+                </div>
+              </div>
+              <div className="hero-stat-item">
+                <i className="fas fa-piggy-bank"></i>
+                <div>
+                  <strong>Stay on Track</strong>
+                  <span>Never overspend</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Budget Tips Section */}
+      <section className="budget-intro">
+        <div className="container featured-grid">
+          <div className="featured-image">
+            <img
+              src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80"
+              alt="Budget Planning"
+            />
+            <div className="featured-badge">
+              <i className="fas fa-lightbulb"></i> Smart Tips
+            </div>
+          </div>
+
+          <div className="featured-content">
+            <span className="section-tag">| Budget Smarter</span>
+            <h2>Travel More, <strong>Spend Less</strong></h2>
+            <p>
+              Our budget planner helps you organize your trip expenses efficiently. 
+              Track everything from accommodation to activities, and never worry about 
+              unexpected costs ruining your adventure.
+            </p>
+            <ul className="feat-list">
+              <li><i className="fas fa-circle-check"></i> Categorize all your expenses</li>
+              <li><i className="fas fa-circle-check"></i> Real-time budget tracking</li>
+              <li><i className="fas fa-circle-check"></i> Visual spending breakdown</li>
+              <li><i className="fas fa-circle-check"></i> Export and share your budget</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -72,6 +130,42 @@ export default function BudgetPlannerPage() {
       {/* Main Budget Section */}
       <section className="budget-main">
         <div className="container">
+          {/* Quick Stats Cards */}
+          <div className="quick-stats-grid">
+            <div className="quick-stat-card">
+              <div className="stat-icon" style={{background: 'linear-gradient(135deg, #C9A84C 0%, #E8C97A 100%)'}}>
+                <i className="fas fa-sack-dollar"></i>
+              </div>
+              <div className="stat-info">
+                <h4>Total Budget</h4>
+                <p className="stat-number">${totalBudget || "0"}</p>
+                <span className="stat-label">Set your trip budget</span>
+              </div>
+            </div>
+
+            <div className="quick-stat-card">
+              <div className="stat-icon" style={{background: 'linear-gradient(135deg, #E07070 0%, #F08080 100%)'}}>
+                <i className="fas fa-money-bill-trend-up"></i>
+              </div>
+              <div className="stat-info">
+                <h4>Total Spent</h4>
+                <p className="stat-number">${totalSpent.toFixed(2)}</p>
+                <span className="stat-label">{expenses.length} expenses logged</span>
+              </div>
+            </div>
+
+            <div className="quick-stat-card">
+              <div className="stat-icon" style={{background: remaining >= 0 ? 'linear-gradient(135deg, #7DC87D 0%, #90D890 100%)' : 'linear-gradient(135deg, #C84040 0%, #E07070 100%)'}}>
+                <i className={`fas ${remaining >= 0 ? 'fa-circle-check' : 'fa-circle-exclamation'}`}></i>
+              </div>
+              <div className="stat-info">
+                <h4>{remaining >= 0 ? 'Remaining' : 'Over Budget'}</h4>
+                <p className="stat-number">${Math.abs(remaining).toFixed(2)}</p>
+                <span className="stat-label">{percentSpent.toFixed(1)}% of budget used</span>
+              </div>
+            </div>
+          </div>
+
           <div className="budget-grid">
             {/* Left Column - Budget Setup & Form */}
             <div className="budget-left">
@@ -249,6 +343,64 @@ export default function BudgetPlannerPage() {
                 </ul>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Inspiration Gallery */}
+      <section className="budget-gallery">
+        <div className="container">
+          <div className="section-header" style={{textAlign: 'center', marginBottom: '48px'}}>
+            <span className="section-tag">| Budget Inspiration</span>
+            <h2>Smart Travelers <strong>Share Their Stories</strong></h2>
+          </div>
+          <div className="gallery-grid">
+            <div className="gallery-item">
+              <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80" alt="Southeast Asia" />
+              <div className="gallery-overlay">
+                <h4>Southeast Asia</h4>
+                <p><i className="fas fa-coins"></i> $2,500 / 3 weeks</p>
+              </div>
+            </div>
+            <div className="gallery-item">
+              <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=600&q=80" alt="Europe Trip" />
+              <div className="gallery-overlay">
+                <h4>European Adventure</h4>
+                <p><i className="fas fa-coins"></i> $4,200 / 2 weeks</p>
+              </div>
+            </div>
+            <div className="gallery-item">
+              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Beach Getaway" />
+              <div className="gallery-overlay">
+                <h4>Tropical Paradise</h4>
+                <p><i className="fas fa-coins"></i> $1,800 / 10 days</p>
+              </div>
+            </div>
+            <div className="gallery-item">
+              <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80" alt="Island Hopping" />
+              <div className="gallery-overlay">
+                <h4>Island Hopping</h4>
+                <p><i className="fas fa-coins"></i> $3,100 / 2 weeks</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="budget-cta">
+        <div className="container">
+          <div className="cta-content">
+            <div className="cta-icon">
+              <i className="fas fa-chart-pie"></i>
+            </div>
+            <div className="cta-text">
+              <h3>Ready to Start Your Budget?</h3>
+              <p>Join thousands of travelers who plan smarter and travel better with our budget planner</p>
+            </div>
+            <button className="btn-cta" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              Start Planning Now <i className="fas fa-arrow-up"></i>
+            </button>
           </div>
         </div>
       </section>
